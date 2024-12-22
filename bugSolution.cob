@@ -1,0 +1,17 @@
+01  WS-AREA. 
+    05  WS-COUNT PIC 9(5) VALUE 0. 
+    05  WS-TABLE OCCURS 100 TIMES. 
+       10  WS-ENTRY PIC X(80). 
+
+* Some COBOL statements...
+
+IF WS-COUNT < 100 THEN
+    ADD 1 TO WS-COUNT
+    MOVE 'Some data' TO WS-TABLE(WS-COUNT) 
+ELSE
+    PERFORM ERROR-HANDLING
+END-IF
+
+ERROR-HANDLING.
+    DISPLAY "Error: Table overflow." 
+    STOP RUN.
